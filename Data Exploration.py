@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 
 
@@ -26,4 +27,36 @@ def readFREDdata():
     print(data.head())
 
 
-readFREDdata()
+def readKaggleDatasets():
+    keyAttributes = ["INSTNM", "STABBR", "ADM_RATE", "TUITIONFEE_IN", "TUITIONFEE_OUT", "CDR3", "DEBT_MDN",
+                     "GRAD_DEBT_MDN", "CUML_DEBT_N", "faminc", "DEBT_MDN_SUPP", "RPY_1YR_RT"]
+
+    overall = {}
+    for attr in keyAttributes:
+        overall[attr] = []
+
+    overall["Year"] = []
+
+
+    folder = r"D:\0_Work\Pycharm\DS105-Data-Storage\Kaggle Datasets\datasets"
+    year = 1996
+    for file in os.listdir(folder):
+        path = folder + "\\" + file
+
+        data = pd.read_csv(path)
+
+        for key in keyAttributes:
+            overall[key] += list(data[key])
+
+        for i in range(data.shape[0]):
+            overall["Year"].append(year)
+
+        year += 1
+
+    overall = pd.DataFrame.from_dict(overall)
+
+    overall.to_csv(path_or_buf="test.csv")
+
+
+
+readKaggleDatasets()
