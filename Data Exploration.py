@@ -165,9 +165,9 @@ def transformAttrsToStateLevel(attrs, name, year):
 
 
 def main():
-    attrs = ["UGDS_WHITE", "UGDS_BLACK", "UGDS_HISP", "UGDS_ASIAN"]
+    attrs = ["TUITIONFEE_IN", "TUITIONFEE_OUT"]
 
-    transformAttrsToStateLevel(attrs, "racial undergrad shares", 2013)
+    transformAttrsToStateLevel(attrs, "in and out tuition fees", 2013)
 
 
 main()
