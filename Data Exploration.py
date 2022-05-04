@@ -46,7 +46,7 @@ def readFREDdata():
 
 def readKaggleDatasets(keyAttributes):
     keyAttributes.append("STABBR")
-
+    keyAttributes.append("INSTNM")
     overall = {}
     for attr in keyAttributes:
         overall[attr] = []
@@ -71,7 +71,6 @@ def readKaggleDatasets(keyAttributes):
     overall = pd.DataFrame.from_dict(overall)
     overall = overall[overall["STABBR"].isin(states)]
 
-    keyAttributes.remove("STABBR")
 
     return overall
 
@@ -164,10 +163,60 @@ def transformAttrsToStateLevel(attrs, name, year):
     xlw.save()
 
 
+def boxPlotBlackInst():
+    data = readKaggleDatasets(["UGDS_BLACK", "DEBT_MDN", "mn_earn_wne_p6"])
+    data = data[data["Year"] == 2011]
+    data.replace("PrivacySuppressed", None, inplace=True)
+    data.dropna(inplace=True)
+    data.reset_index(inplace=True, drop=True)
+
+    sns.boxplot(data=data, x="UGDS_BLACK")
+    plt.show()
+
+    desc = data["UGDS_BLACK"].describe()
+
+    quartiles = [desc["25%"], desc["50%"], desc["75%"]]
+    for i in range(data.shape[0]):
+        val = data.at[i, "UGDS_BLACK"]
+
+        quartSet = False
+        for a in range(len(quartiles)):
+            bench = quartiles[a]
+            if val <= bench:
+                data.at[i, "Quartile"] = a + 1
+                quartSet = True
+                break
+
+        if not quartSet:
+            data.at[i, "Quartile"] = 4
+
+    data[["DEBT_MDN", "mn_earn_wne_p6"]] = data[["DEBT_MDN", "mn_earn_wne_p6"]].astype(float)
+
+    sns.relplot(data=data, x="DEBT_MDN", y="mn_earn_wne_p6", col="Quartile")
+    plt.show()
+
+
 def main():
-    attrs = ["TUITIONFEE_IN", "TUITIONFEE_OUT"]
+    used_attributes = ["PBI", "CDR3", "TUITIONFEE_IN", "TUITIONFEE_OUT", "C150_4_WHITE", "C150_4_BLACK", "C150_4_HISP",
+                       "C150_4_ASIAN", "C150_4_NHPI", "C150_4_2MOR", "C150_4_NRA", "C150_4_UNKN",
+                       "UGDS_WHITE", "UGDS_BLACK", "UGDS_HISP", "UGDS_ASIAN"]
 
-    transformAttrsToStateLevel(attrs, "in and out tuition fees", 2013)
+
+def countInstOverTime():
+    data = readKaggleDatasets(["PBI"])
+
+    years = list(data["Year"].unique())
+
+    saveVal = pd.DataFrame()
+
+    for state in states:
+        for year in years:
+            sub = data[(data["STABBR"] == state) & (data["Year"] == year)]
+            institutions = len(sub["INSTNM"])
+
+            saveVal.at[state, year] = institutions
+
+    saveVal.to_excel("Visualization Datasets\\instiution count data.xlsx")
 
 
-main()
+countInstOverTime()
