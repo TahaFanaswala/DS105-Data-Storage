@@ -71,7 +71,6 @@ def readKaggleDatasets(keyAttributes):
     overall = pd.DataFrame.from_dict(overall)
     overall = overall[overall["STABBR"].isin(states)]
 
-
     return overall
 
 
@@ -196,10 +195,47 @@ def boxPlotBlackInst():
     plt.show()
 
 
-def main():
-    used_attributes = ["PBI", "CDR3", "TUITIONFEE_IN", "TUITIONFEE_OUT", "C150_4_WHITE", "C150_4_BLACK", "C150_4_HISP",
-                       "C150_4_ASIAN", "C150_4_NHPI", "C150_4_2MOR", "C150_4_NRA", "C150_4_UNKN",
-                       "UGDS_WHITE", "UGDS_BLACK", "UGDS_HISP", "UGDS_ASIAN"]
+def generateNullCountTables():
+    # PBI isn't really used
+    # CDR3 data uses the data gathered in year 2013, although it refers to the 2011 fiscal year CDR cohort
+    # Null values for TUITIONFEE_IN and TUITIONFEE_OUT are collected over time
+    # C150_4_* comes from the data gathered in year 2013
+    # Null values for UGDS_* are collected over time
+    oneYearOnly = ["CDR3",
+                   "C150_4_WHITE", "C150_4_BLACK", "C150_4_HISP", "C150_4_ASIAN", "C150_4_NHPI",
+                   "C150_4_NRA", "C150_4_UNKN"]
+    YEAR = 2013
+
+    multiYear = ["TUITIONFEE_IN", "TUITIONFEE_OUT", "UGDS_WHITE", "UGDS_BLACK", "UGDS_HISP", "UGDS_ASIAN"]
+
+    data = readKaggleDatasets(oneYearOnly[:])
+    data = data[data["Year"] == YEAR]
+
+    saveVal = pd.DataFrame()
+
+    for state in states:
+        for attr in oneYearOnly:
+            sub = data[data["STABBR"] == state][attr]
+            nullCount = sub.isna().sum()
+
+            saveVal.at[state, attr] = nullCount
+
+    saveVal.to_excel("Visualization Datasets\\One Year Attributes Null Counts.xlsx")
+
+    data = readKaggleDatasets(multiYear[:])
+
+    for attr in multiYear:
+        saveVal = pd.DataFrame()
+
+        for year in data["Year"].unique():
+            sub = data[data["Year"] == year]
+
+            for state in states:
+                stateVals = sub[sub["STABBR"] == state][attr]
+                nullCount = stateVals.isna().sum()
+                saveVal.at[state, year] = nullCount
+
+        saveVal.to_excel(f"Visualization Datasets\\{attr} Null Counts Over Time.xlsx")
 
 
 def countInstOverTime():
@@ -219,4 +255,53 @@ def countInstOverTime():
     saveVal.to_excel("Visualization Datasets\\instiution count data.xlsx")
 
 
-countInstOverTime()
+def percentAdjustNullCounts():
+    instCountOverTime = pd.read_excel("Visualization Datasets\\instiution count data.xlsx",
+                                      sheet_name="Sheet1").set_index("Unnamed: 0")
+    oneYearNullCounts = pd.read_excel("Visualization Datasets\\One Year Attributes Null Counts.xlsx",
+                                      sheet_name="Sheet1").set_index("Unnamed: 0")
+
+    oneYearOnly = ["CDR3",
+                   "C150_4_WHITE", "C150_4_BLACK", "C150_4_HISP", "C150_4_ASIAN", "C150_4_NHPI",
+                   "C150_4_NRA", "C150_4_UNKN"]
+    YEAR = 2013
+
+    saveVal = pd.DataFrame()
+    for state in states:
+        instCount = instCountOverTime.at[state, YEAR]
+        for attr in oneYearOnly:
+            nulls = oneYearNullCounts.at[state, attr]
+
+            percent = nulls / instCount
+
+            saveVal.at[state, attr] = percent
+
+    xlw = pd.ExcelWriter("Visualization Datasets/One Year Attributes Null Counts.xlsx",
+                         engine="openpyxl", mode="a", if_sheet_exists="replace")
+    saveVal.to_excel(xlw, sheet_name="Percent")
+    xlw.save()
+    xlw.close()
+
+    multiYear = ["TUITIONFEE_IN", "TUITIONFEE_OUT", "UGDS_WHITE",
+                 "UGDS_BLACK", "UGDS_HISP", "UGDS_ASIAN"]
+
+    for attr in multiYear:
+        path = f"Visualization Datasets\\{attr} Null Counts Over Time.xlsx"
+        data = pd.read_excel(path, sheet_name="Sheet1").set_index("Unnamed: 0")
+
+        saveVal = pd.DataFrame()
+
+        for state in states:
+            for col in data.columns:
+                instCount = instCountOverTime.at[state, col]
+                nulls = data.at[state, col]
+
+                percent = nulls / instCount
+                saveVal.at[state, col] = percent
+
+        xlw = pd.ExcelWriter(path, engine="openpyxl", mode="a", if_sheet_exists="replace")
+        saveVal.to_excel(xlw, sheet_name="Percent")
+        xlw.save()
+        xlw.close()
+
+
