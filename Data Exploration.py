@@ -74,6 +74,9 @@ def readKaggleDatasets(keyAttributes):
     overall = pd.DataFrame.from_dict(overall)
     overall = overall[overall["STABBR"].isin(states)]
 
+    keyAttributes.remove("STABBR")
+    keyAttributes.remove("INSTNM")
+
     return overall
 
 
@@ -142,7 +145,7 @@ def barChartCollegeScorecardData(attr, name, year):
     plt.show()
 
 
-def transformAttrsToStateLevel(attrs, name, year):
+def transformAttrsToStateLevel(attrs, name, year, save=True):
     data = readKaggleDatasets(attrs)
     data = data[data["Year"] == year]
     saveVal = pd.DataFrame()
@@ -160,9 +163,12 @@ def transformAttrsToStateLevel(attrs, name, year):
 
         index += 1
 
-    xlw = pd.ExcelWriter("Visualization Datasets\\" + name + ".xlsx")
-    saveVal.to_excel(xlw, sheet_name="main", index=False)
-    xlw.save()
+    if save:
+        xlw = pd.ExcelWriter("Visualization Datasets\\" + name + ".xlsx")
+        saveVal.to_excel(xlw, sheet_name="main", index=False)
+        xlw.save()
+    else:
+        return saveVal
 
 
 def boxPlotBlackInst():
@@ -370,7 +376,6 @@ def timeSeriesNullPercentageForMultiYearAttributes():
 
             saveVal.at[attr, year] = totalNulls / sumInst
 
-
         saveVal.to_csv(path_or_buf="sanity check.csv")
 
     transformedData["Year"] = transformedData["Year"].astype(int)
@@ -397,4 +402,24 @@ def computeTicks(x, step=5):
     return range(dMin, dMax, step)
 
 
-timeSeriesNullPercentageForMultiYearAttributes()
+def generateCorrelationMatrix():
+    multiYear = ["TUITIONFEE_IN", "TUITIONFEE_OUT", "UGDS_WHITE", "UGDS_BLACK", "UGDS_HISP", "UGDS_ASIAN"]
+    oneYearOnly = ["CDR3",
+                   "C150_4_WHITE", "C150_4_BLACK", "C150_4_HISP", "C150_4_ASIAN", "C150_4_NHPI",
+                   "C150_4_NRA", "C150_4_UNKN"]
+
+    attrs = multiYear + oneYearOnly
+
+    data = transformAttrsToStateLevel(attrs, "", 2013, False)
+
+    corrMatrix = data.corr()
+
+    f, ax = plt.subplots(figsize=(20, 20))
+
+    g = sns.heatmap(corrMatrix, ax=ax, annot=True)
+    g.set_xticklabels(g.get_xmajorticklabels(), fontsize=8)
+    g.set_yticklabels(g.get_ymajorticklabels(), fontsize=8)
+    plt.show()
+
+
+generateCorrelationMatrix()
