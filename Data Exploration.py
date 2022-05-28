@@ -151,6 +151,7 @@ def transformAttrsToStateLevel(attrs, name, year, save=True):
     saveVal = pd.DataFrame()
     index = 0
 
+
     for state in states:
         sub = data[data["STABBR"] == state]
 
@@ -417,6 +418,18 @@ def generateCorrelationMatrix():
     f, ax = plt.subplots(figsize=(20, 20))
 
     g = sns.heatmap(corrMatrix, ax=ax, annot=True)
+    g.set_xticklabels(g.get_xmajorticklabels(), fontsize=8)
+    g.set_yticklabels(g.get_ymajorticklabels(), fontsize=8)
+    plt.show()
+
+    f, ax = plt.subplots(figsize=(20, 20))
+    baseData = readKaggleDatasets(attrs)
+    baseData = baseData[baseData["Year"] == 2013]
+    baseData.dropna(inplace=True)
+    baseData.drop(["Year"], inplace=True, axis=1)
+    baseCorr = baseData.corr()
+
+    g = sns.heatmap(baseCorr, ax=ax, annot=True)
     g.set_xticklabels(g.get_xmajorticklabels(), fontsize=8)
     g.set_yticklabels(g.get_ymajorticklabels(), fontsize=8)
     plt.show()
