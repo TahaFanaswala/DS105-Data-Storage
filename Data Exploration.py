@@ -1,25 +1,37 @@
 import os
-
 import matplotlib
 import pandas as pd
 import numpy as np
 import math
-
 import warnings
-
-warnings.simplefilter("ignore")
-
 import seaborn as sns
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import matplotlib
+from matplotlib.ticker import PercentFormatter
 from collections import Counter
+import plotly.express as px
+import geopandas as gpd
+
+warnings.simplefilter("ignore")
 
 states = ['AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA',
           'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY', 'LA', 'MA', 'MD', 'ME',
           'MI', 'MN', 'MO', 'MS', 'MT', 'NC', 'ND', 'NE', 'NH', 'NJ', 'NM',
           'NV', 'NY', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX',
           'UT', 'VA', 'VT', 'WA', 'WI', 'WV', 'WY']
+
+
+def computeTicks(x, step=5):
+    """
+    Computes domain with given step encompassing series x
+    @ params
+    x    - Required - A list-like object of integers or floats
+    step - Optional - Tick frequency
+    """
+    xMax, xMin = math.ceil(max(x)), math.floor(min(x))
+    dMax, dMin = xMax + abs((xMax % step) - step) + (step if (xMax % step != 0) else 0), xMin - abs((xMin % step))
+    return range(dMin, dMax, step)
 
 
 def readFREDdata():
@@ -127,8 +139,6 @@ def barChartCollegeScorecardData(attr, name, year):
     data = pd.read_csv("test.csv")
 
     filtered = data[data["Year"] == year][["STABBR", attr]]
-    states = list(pd.unique(filtered["STABBR"]))
-    states = sorted(states)
 
     averages = pd.DataFrame()
     for i in range(len(states)):
@@ -150,7 +160,6 @@ def transformAttrsToStateLevel(attrs, name, year, save=True):
     data = data[data["Year"] == year]
     saveVal = pd.DataFrame()
     index = 0
-
 
     for state in states:
         sub = data[data["STABBR"] == state]
@@ -340,7 +349,8 @@ def generateStackedBarChartOneYearAttributesNullCount():
     matplotlib.rc("axes", labelsize=20)
     matplotlib.rc("font", size=15)
 
-    bar1 = sns.barplot(x="Attribute", y="Not Null", data=transformedData, color="blue")
+    bar1 = sns.barplot(x="Attribute", y="Not Null", data=transformedData, color="blue").set_title(
+        "Percent of entries with null value")
     bar2 = sns.barplot(x="Attribute", y="Null", data=transformedData, color="red")
 
     topBar = mpatches.Patch(color="blue", label="Not Null")
@@ -384,23 +394,12 @@ def timeSeriesNullPercentageForMultiYearAttributes():
     matplotlib.rc("axes", labelsize=20)
     matplotlib.rc("font", size=15)
 
-    sns.lineplot(data=transformedData, x="Year", y="Null Percent", hue="Attribute")
+    sns.lineplot(data=transformedData, x="Year", y="Null Percent", hue="Attribute").set_title(
+        "Percent of entries with null value over time")
 
     plt.xticks(computeTicks(transformedData["Year"], step=1))
 
     plt.show()
-
-
-def computeTicks(x, step=5):
-    """
-    Computes domain with given step encompassing series x
-    @ params
-    x    - Required - A list-like object of integers or floats
-    step - Optional - Tick frequency
-    """
-    xMax, xMin = math.ceil(max(x)), math.floor(min(x))
-    dMax, dMin = xMax + abs((xMax % step) - step) + (step if (xMax % step != 0) else 0), xMin - abs((xMin % step))
-    return range(dMin, dMax, step)
 
 
 def generateCorrelationMatrix():
@@ -435,4 +434,44 @@ def generateCorrelationMatrix():
     plt.show()
 
 
-generateCorrelationMatrix()
+def generateGeoPlot(sourceData, attr, sheetname, title):
+    statesDF = gpd.read_file("tl_2017_us_state/tl_2017_us_state.shp")
+    statesDF = statesDF[statesDF["STUSPS"].isin(states)]
+
+    data = pd.read_excel(sourceData, sheet_name=sheetname)
+
+    fig = px.choropleth(data, locations="State", geojson=statesDF, color=attr,
+                        scope="usa", locationmode="USA-states", title=title,
+                        color_continuous_scale="rdbu_r")
+    fig.show()
+
+
+def main():
+    source = "Visualization Datasets/in and out tuition fees.xlsx"
+    attrs = ["TUITIONFEE_IN", "TUITIONFEE_OUT"]
+
+    generateGeoPlot(source, attrs[0], "main", "In-state tuition by state 2013 (dollars)")
+    generateGeoPlot(source, attrs[1], "main", "Out of state tuition by state 2013 (dollars)")
+
+
+def createIntroVizz():
+    data = pd.read_excel("Visualization Datasets/student debt percent, enrollment, and per capita debt.xlsx",
+                         sheet_name="main")
+
+    matplotlib.rc_file_defaults()
+    ax1 = sns.set_style(style=None, rc=None)
+
+    fig, ax1 = plt.subplots(figsize=(12, 6))
+
+    sns.lineplot(data=data["Total Enrollment"], marker="o", sort=False, ax=ax1, color="red")
+    ax1.set_ylabel("Total Enrollment (millions)")
+    ax1.set_xlabel("Year")
+    ax2 = ax1.twinx()
+
+    sns.barplot(data=data, x="Year", y="Student Debt Percentage", alpha=0.5, ax=ax2, color="blue")
+    ax2.set_ylabel("Percent of Students in Debt")
+
+    plt.show()
+
+
+createIntroVizz()
