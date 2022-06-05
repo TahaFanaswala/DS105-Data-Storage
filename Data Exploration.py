@@ -474,4 +474,33 @@ def createIntroVizz():
     plt.show()
 
 
-createIntroVizz()
+def createRaceVCompletionScatterPlots():
+    root = "C150_4_"
+    attrs = ["WHITE", "BLACK", "ASIAN"]
+
+    names = []
+    for race in attrs:
+        names.append(root + race)
+
+    data = readKaggleDatasets(names + ["CDR3"])
+    data = data[data["Year"] == 2013].dropna()
+
+    for race in attrs:
+        ax = sns.regplot(data=data, x=root + race, y="CDR3", line_kws={"color": "red"}, marker="+")
+        ax.set_xlabel(f"4 year completion percentage: {race.lower()} students")
+        ax.set_ylabel("Default Rate")
+        plt.show()
+
+
+def histogramGenerator(attr, year):
+    data = readKaggleDatasets([attr])
+    data = data[data["Year"] == year]
+
+    ax = sns.histplot(data=data, x=attr, kde=True, stat="count", bins=25)
+    ax.lines[0].set_color("crimson")
+    ax.set_xlabel("Default Rate")
+    ax.set_title("Histogram of default rates across universities")
+    plt.show()
+
+
+histogramGenerator("CDR3", 2013)
