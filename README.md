@@ -1,5 +1,81 @@
 # Understanding The Impacts Race Has On Student Loan Repayment 
 
+## Motivation 
+Headlines on the ever-increasing student debt crisis ,such as these, plague the media. 
+
+
+<img width="452" alt="image" src="https://user-images.githubusercontent.com/100439058/172906622-943a190d-ed45-4721-b066-53d3294581e5.png">
+
+
+<img width="452" alt="image" src="https://user-images.githubusercontent.com/100439058/172906658-1ddb4aec-0e82-4db0-bbc2-06ce642bf33c.png">
+
+Student Debt levels have increased beyond accumulated car loans and credit card debt. 
+
+
+<img width="452" alt="image" src="https://user-images.githubusercontent.com/100439058/172906727-9ffb045d-dd70-4bae-99cb-40262c062870.png">
+
+
+44 million Americans collectively hold over $1.6 trillion in student debt. 
+
+At the same time, advancements in technology, especially automation, are making it harder to earn a living wage without some type of advanced degree. Today, college graduates earn 80% more than those with just a high school diploma, on average. College is more expensive, and important, than ever before. This  dichotomy puts students in a difficult situation: do they risk going into debt they can’t pay back or miss out on the benefits of a college degree?
+
+Having recently taken out such loans ourselves, learning more about the student loan crisis became a topic of increasing interest to us. For the loans we have taken as well as the student loans we may take in the future, it is imperative to understand the costs of higher education in our current political and economic climate. Through our project we hope to get more clarity around questions such as: What is the student loan crisis? Is higher education worth it? What factors affect default rates?
+
+## Justification 
+
+
+
+## Aim 
+
+There were sharp differences in borrowing and repayment patterns across demographic groups. African American students are more likely to borrow than students from other racial and ethnic groups pursuing similar types of degrees, and are more likely to borrow relatively large amounts. They are less successful in repaying their loans and more likely to default. Racial differences in pre-college circumstances, in the types of institutions attended, and in post-college earnings all contribute to the difficulties African American students face in college and beyond.
+
+<img width="452" alt="image" src="https://user-images.githubusercontent.com/100439058/172907332-2279aadf-52b0-4874-a834-223650d31d34.png">
+
+
+There were sharp differences in borrowing and repayment patterns across demographic groups. African American students are more likely to borrow than students from other racial and ethnic groups pursuing similar types of degrees, and are more likely to borrow relatively large amounts. They are less successful in repaying their loans and more likely to default. Racial differences in pre-college circumstances, in the types of institutions attended, and in post-college earnings all contribute to the difficulties African American students face in college and beyond.
+
+We have focused our research into comparing loan usage and college achievement of students of different races to evaluate the implications of racial educational inequality.
+
+Taking all of that into consideration, here are the questions we aim to answer:
+
+•	How does race impact on the completition rate of the students?
+
+•	How does average debt intake vary with race?
+
+•	How are students of different racial backgrounds across the states distributed?
+
+
+
+## Understanding our data
+There is an overwhelming amount of data available online on the topic of student loans. Through our research the main sources we found included data.gov, FRED dataset, College Scorecard, NY Fed Microeconomic Data, Statista and StudentAid government datasets. We went through each of these main sources and shortlisted which datasets answered the question the best. Though this was a time-taking process, it gave us a better understanding of what data was out there.
+
+### Fred Dataset
+
+(add image)
+
+This dataset showed Student loans owned and securitized in billions of dollars from 2006 to 2020. It was sourced from the Board of Governors of the Federal Reserve System (US) as part of Economic Research Data. It gives quarterly data from 2006 to 2021, so there are 64 observations. All the data in this dataset was numerical. Fred data aggregates its data from a variety of sources most of which are US government agencies. It is unclear how these agencies collect this particular data however as these are government agencies, it will be done mostly through electronic transmissions or mutually developed questionnaires. There may be a degree of bias introduced with the questionnaires and less so with the electronic transmissions.
+
+### NY Fed Microeconomic Dataset
+
+(add image)
+
+This dataset looks at default rates under different factors such as school type, age, degree program, graduation status, college selectivity and family income. It was sourced from New York Fed Consumer Credit Panel collected as part of the Federal Reserve Bank of New York’s Centre of Microeconomic Data. There were 26 tables in the data. We have only used one so far in our visualizations. It looks at student loan debt from 2003 to 2021 for the 50 states so it had 950 observations. The credit data was collected through a sampling approach of a total adult population with a credit report of 267 million people. They conducted a 5% random primary sample of 13.4 million individuals’ Equifax credit report data. The large scale of this data as well as the randomness means that little bias was introduced in the data collection process.
+
+### College Scorecard Dataset
+
+(add image)
+
+The primary purpose of the Scorecard is to provide data to help prospective postsecondary students make informed enrolment decisions. It was sourced from the US Department of Education. This data contains an extensive database with institution-level data files from 1996 to 2020 containing aggregate data for each institution. There were over 200 institutional characteristics per year such as enrolment, student aid, costs, and student outcomes. It had 3252 columns in total and the data was a mixture of numerical data and categoric data. College Scorecard does not report the percentage of entering students at each school for which they have earnings data. There may be some inaccuracies introduced with respect to schools with branch campuses, because earnings data are only reported at the system level, not for each distinct campus
+
+## General Limitations of Datasets
+
+• Institution based data meaning cant split up students into their races
+• Dataset only contains data for students who have taken student loan – not representative of overall American population and cant make comparisons
+• Issues with there being attributes which were discontinued in certain years – inconsistency within the dataset
+• There may be outliers in the data however excluding states may manipulate the data too much
+• Most recent years don’t have data – COVID – analysis may not be UpToDate
+• Uneven dataset. The number of datapoints vary by year and state
+
 ## Data cleaning for analysis: 
 
 The Obama administration aimed to increase the transparency of the higher education system by releasing vast pools of data through the college scorecard. The scorecard provides data which is sufficient for us to be able to measure discrepancies influencing higher education through gender, race, and social class. Our project looks to utilise this availability of big data to understand the impacts that race has on the various educational outcomes of university students, specifically looking at how student loans discriminate against various races. 
