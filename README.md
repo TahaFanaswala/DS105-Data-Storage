@@ -8,7 +8,7 @@ The nature of the college scorecard dataset that we are using is not in the rawe
 
 ### Percentage null values for various attributes: observing the gaps in the data 
 
-![one year attributes null count percent](https://user-images.githubusercontent.com/98602884/172902450-65b9ff89-0fb7-4711-a38d-bf97ff7fc1e1.png)
+![Capture](https://user-images.githubusercontent.com/98602884/172904095-ab6532a8-612f-4a7f-ad54-7371aba6159d.JPG)
 
 
 We have initially visualised the shape and the contents of our data by showcasing the proportion of missing values with seaborn displot. We had prior narrowed down the attributes which related to race and the various factors we wished to compare. This displot shows how the various attributes are hereby concentrated with null values especially C150_4_NHPI which showcases an above 90% of values within the attribute are null.
@@ -39,12 +39,17 @@ We have focused our research on comparing loan usage and college achievement of 
 
 ### Correlation matrix which aggregates raw data from 2013 for key attributes into a state-level basis 
 
+![college correlation matrix](https://user-images.githubusercontent.com/98602884/172903230-6c88f9c8-f786-4c0c-a8e5-6f5982b4bc5b.png)
+
 ### Correlation matrix which aggregates raw data from 2013 for key attributes into an institution level basis – using clean data  
+
+![state correlation matrix](https://user-images.githubusercontent.com/98602884/172903358-d9e0232a-27f9-4a7f-81bd-35debae55a94.png)
 
 We have initially created a heatmap correlation matrix for 2013 for the attributes of interest relating to race using the seaborne library on python. Through creating this correlation matrix, we were able to utilise the Pearson correlation coefficient to observe any linear relationship between two attributes. We were also able to use this table in order to identify any multicollinearity in case we wished to incorporate machine learning into our project. 
 
 
-correlation=(Cov(x,y))/(σx*σy)
+![Capture1](https://user-images.githubusercontent.com/98602884/172904934-6ff71e2f-11c6-46d2-800e-17100c7f795b.JPG)
+
 
 This matrix is especially important when we are conducting such multivariate analysis. Through observing strong correlations or lack of correlations, we were able to pick our appropriate attributes for conducting further analysis and see if the values showed any relationship which would answer our question of how race impacts educational outcomes.
 
