@@ -62,6 +62,9 @@ def readFREDdata():
 
 # Reads the College Scorecard datasets across all years for the attributes in keyAttributes
 def readCollegeScorecardDatasets(keyAttributes):
+    if not isinstance(keyAttributes, list):
+        keyAttributes = [keyAttributes]
+
     # Ensures the state abbreviation and institution number is recorded in final result
     keyAttributes.append("STABBR")
     keyAttributes.append("INSTNM")
@@ -125,10 +128,10 @@ def getSchoolCounts(year):
     return counts
 
 
-# Creates a time series graph of a particular attribute **
+# Creates a time series graph of a particular attribute
 def plotAttributeTimeSeries(attr, name):
     # Read in the data across time for the attribute in question
-    data = readCollegeScorecardDatasets(attr)
+    data = readCollegeScorecardDatasets([attr])
 
     # Gather all years
     years = pd.unique(data["Year"])
@@ -136,22 +139,31 @@ def plotAttributeTimeSeries(attr, name):
     # Initialize dataframe that stores results
     filtered = pd.DataFrame()
 
+    # Iterate over each year
     for i in range(len(years)):
+        # Get the year and store it into the filtered dataframe
         year = years[i]
         filtered.at[i, "Year"] = year
+        # Iterate over each state
         for state in states:
+            # Gather the attribute's values for that state in the year of interest
             sub = data[(data["Year"] == year) & (data["STABBR"] == state)][attr]
+            # Drop null values
             sub.dropna(inplace=True)
 
+            # Calculate the average
             avg = np.average(sub)
 
+            # Store the result in the dataframe, and assign it to the proper state
             filtered.at[i, state] = avg
 
+    # Get the top 10 states in terms of number of institutions in 2013
     schools = list(getSchoolCounts(2013).keys())[:11]
     schools.append("Year")
 
     filtered = filtered[schools]
 
+    # Format and show the plot
     sns.set(rc={"figure.figsize": (11.7, 8.27)})
 
     setup = pd.melt(filtered, "Year", value_name=name)
@@ -163,29 +175,37 @@ def plotAttributeTimeSeries(attr, name):
 
 
 # Generates a bar chart for a particular attribute in a given year by aggregating the data to a
-# state level **
+# state level
 def barChartCollegeScorecardData(attr, name, year):
-    data = pd.read_csv("test.csv")
+    # Read the College Scorecard Data and exclude any data not from the year in question
+    data = readCollegeScorecardDatasets(attr)
+    data = data[data["Year"] == year]
 
-    filtered = data[data["Year"] == year][["STABBR", attr]]
-
+    # Initialize transformed dataframe
     averages = pd.DataFrame()
+    # Iterate over each state
     for i in range(len(states)):
+        # Get the state abbreviation
         state = states[i]
 
-        sub = filtered[filtered["STABBR"] == state]
+        # Gather the datapoints for that state and drop null values
+        sub = data[data["STABBR"] == state]
         sub.dropna(inplace=True)
 
+        # Get the values for that attribute, average them, and store them in the averages dataframe
         avg = np.average(sub[attr])
         averages.at[i, "State"] = state
         averages.at[i, name] = avg
 
+    # Generate the bar chart and show it
     sns.barplot(x="State", y=name, data=averages).set_title(f"{name} in {year} by State")
     plt.show()
 
 
 # Aggregates the institutional data on a state level
 def transformAttrsToStateLevel(attrs, name, year, save=True):
+    if not isinstance(attrs, list):
+        attrs = [attrs]
     # Read in the raw data for all years for the list of attributes in attrs
     data = readCollegeScorecardDatasets(attrs)
     # Filter the data to only include the year of interest
@@ -326,21 +346,26 @@ def generateNullCountTables():
         saveVal.to_excel(f"Visualization Datasets\\{attr} Null Counts Over Time.xlsx")
 
 
-# Counts the number of institutions over time**
+# Counts the number of institutions over time
 def countInstOverTime():
-    data = readCollegeScorecardDatasets(["PBI"])
-
-    years = list(data["Year"].unique())
-
+    # Initialize save dataframe
     saveVal = pd.DataFrame()
+    # Generate list of years from 1996 to 2013
+    years = range(1996, 2014)
 
-    for state in states:
-        for year in years:
-            sub = data[(data["STABBR"] == state) & (data["Year"] == year)]
-            institutions = len(sub["INSTNM"])
+    # Create a column of states, and set it as the index
+    saveVal["State"] = states
+    saveVal.set_index("State", inplace=True)
 
-            saveVal.at[state, year] = institutions
+    # Iterate over each year
+    for year in years:
+        # Get the counts of schools for each state in the given year
+        counts = getSchoolCounts(year)
+        # Store the results in the save dataframe
+        for state in states:
+            saveVal.at[state, year] = counts[state]
 
+    # Save the results to an excel spreadsheet
     saveVal.to_excel("Visualization Datasets\\instiution count data.xlsx")
 
 
