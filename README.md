@@ -8,12 +8,14 @@ The nature of the college scorecard dataset that we are using is not in the rawe
 
 ### Percentage null values for various attributes: observing the gaps in the data 
 
+
 ![Capture](https://user-images.githubusercontent.com/98602884/172904095-ab6532a8-612f-4a7f-ad54-7371aba6159d.JPG)
 
 
 We have initially visualised the shape and the contents of our data by showcasing the proportion of missing values with seaborn displot. We had prior narrowed down the attributes which related to race and the various factors we wished to compare. This displot shows how the various attributes are hereby concentrated with null values especially C150_4_NHPI which showcases an above 90% of values within the attribute are null.
 
 ### Percentage of null values for each attribute analysed: time series 
+
 
 ![multi year attributes null count percent over time](https://user-images.githubusercontent.com/98602884/172902609-1cfc0f7f-40a7-466e-b39a-e16e8c93eff8.png)
 
@@ -59,7 +61,11 @@ In order to analyse our data, we used python: pandas, NumPy, matplotlib, seaborn
 
 It is apparent that there are rising costs of tuition fees within the United States. The average tuition fees have been spiralling out of control and this is evident in the rising costs of both in-state and out-of-state tuition costs. Through conducting initial descriptive statistics on our cleaned dataset, we found the trend line to be clearly rising. As illustrated by the line graphs below there is a strong upwards trend for tuition fees all-round for institutions. Through filtering down to the top 11 states' fees, we look to explore further whether factors such as race, family income, and average intake criteria play a significant part in the rising costs to students. 
  
-INSERT GRAPHS 
+![Figure_1](https://user-images.githubusercontent.com/98602884/172906104-f71606c1-8dd8-42a1-a1ec-2745e60ed8d9.png)
+
+
+![Figure_2](https://user-images.githubusercontent.com/98602884/172906184-4624b369-6dd2-466c-87ca-ed7a440eef52.png)
+
 
 ## Preparation for the final product: 
 
@@ -69,11 +75,13 @@ Academic literature suggests that Black college students are more likely to take
 
 ### Histogram of default rates across universities, 2013 
 
+![default rate 2013 historgram](https://user-images.githubusercontent.com/98602884/172906337-07a8866c-0dd2-4999-b506-8abb3053bf62.png)
+
 The CDR3 is representative of the 3-year cohort default rate for each institution. A cohort default rate is the percentage of a school's borrowers who enter repayment on certain Federal Family Education Loan (FFEL) Program or William D. Ford Federal Direct Loan (Direct Loan) Program loans during a particular federal fiscal year (FY) and default or meet other specified conditions prior to the end of the second following fiscal year.
 
 We find that through plotting this histogram, the distribution for the default rate is positively skewed. The shape of the histogram does not follow the natural shape of a normal distribution suggesting that the overall default rates are low on average, ranging between 0.0% to 40.0% under the IQR. 
 
-INSERT GRAPH
+![default rate by state 2013 map](https://user-images.githubusercontent.com/98602884/172906557-2940a5ef-d50a-4435-afb2-62a4a88dc8fd.png)
 
 This map shows the spread of default rates across the states. We can observe that there is significant variation in the default rate across the US with the top 3 defaulting states being: Nevada, Wyoming, and New Mexico and the lowest defaulting states being: Nebraska, North Dakota, and Vermont. We wish to compare the default rates of each state with respect to the average competition rate for each race. 
 
@@ -85,15 +93,22 @@ We have chosen to use the Completion rate for first-time, full-time students at 
 
 We have produces a series containing geographic heat plots for the completion rates for Black, White and Asian students for our analysis. We have limited our visualisations to these groups to cover the top three groups for which we have data. 
 
-INSERT GRAPH 
+![asian 4 year completion percentage](https://user-images.githubusercontent.com/98602884/172907222-26dbf42f-2d70-4e15-b73a-e553a1f3ef63.png)
 
 We can observe from this diagram that the 4year competition percentage for Asian students is high across the board. States with a high percentage of Asian population such as California and the North East exhibit on average higher completion percentages. This pattern may be evident  due to utilising a larger sample size in these regions, exaggerating the average Asian educational attainment. Furthermore, there could be innate differences in the migration patterns which results in a higher completion rate on average. Again, states in the Deep South have a larger percentage of non-Indian, non-Chinese population migrants from Indochina, the Philippines and Central Asia. The generations of migration within these regions uniquely impact their socio-economic conditions, so variability within the Asian community needs to be considered before making any inferences from this visualisation alone. Also, it is important to account for states which have an extremely small population such as Wyoming, Nebraska, New Mexico and Georgia for not showing an accurate depiction of the cross-geographical distribution of the Asian Completion percentages.  
 
+
+![black 4 year completion percentage](https://user-images.githubusercontent.com/98602884/172907315-e14b8c6d-1048-471e-bd47-6047a24844f8.png)
+
 With reference to the completion rates for the black students, the differences, within the Deep South regions which contain large black populations, provide interesting insights. For example, Michigan and Wisconsin, which have a demographic makeup of predominantly black students, show relatively low levels of undergraduate completion. This may be justified by the large automobile driven economy of those states that has led to the emergence of large inner-city poverty and a strong black-hood neighbourhood. These socio-economic factors thereby play a large role in loan repayment. Within the northern states, the low completion rate may be justified by the small population which exists within those regions.
+
+
+![white 4 year completion percentage](https://user-images.githubusercontent.com/98602884/172907392-7d998f8f-5f34-4b89-b877-577c04216aad.png)
 
 White students overall have exhibited lower percentage completion rates across the board and the variation seems to be rather limited. Pennsylvania and the tri-state area containing Delaware, Rhode Island and Connecticut are observable anomalies with relatively high completion rates. These outlier states may demonstrate this nature due to the variation in the volume of universities and institutions within those areas. Areas which contain large concentrations of colleges have some influence on the average educational attainment of the population. For example, Mid-region states tend to have fewer universities which therefore leads to lower completion rates. Beyond accounting for the population sizes there are many external factors and error terms, which need to be taken into consideration when making claims about this visualisation. 
 
 #### Part 2 
+
 
 After assessing each of the attributes separately, we have then completed a series of scatter plots in order to get a true understanding of any correlation which exists between the default rates and the competition rate for each of the races. Using the skitlearn module, we have built a regression model which creates a line of best fit with the following regression formulae. Within our model, we wish to make the independent variable y to be the default rate and the dependent variable component X_1 as the 4-year competition percentage for each race.  
 
@@ -104,6 +119,7 @@ In order to create the most appropriate line of best fit for interpolating and m
 R^2=1-  RSS/TSS
 
 ### Asian 4-year completion percentage vs default rate
+
 
 The 4-year completion percentage of Asian students versus default rate analysis indicates that there is no real strong correlation between these two variables. The Asian student regression has both the least steep line and also tapers off relatively quickly, which is indicative of the fact that Asian students are accordingly more likely to pay off their debts despite not completing their degree relative to black or white students. This can bring into consideration that debt forgiveness has a lower impact on Asian students’ future incomes relative to other races. 
 
@@ -124,6 +140,9 @@ This project began by attempting to unpack the complex and multi-faceted nature 
 ## Appendix:
 Link for github page: 
 Repository:
+
+
+
 
 
 
