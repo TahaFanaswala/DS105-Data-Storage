@@ -1,5 +1,82 @@
 # Understanding The Impacts Race Has On Student Loan Repayment 
 
+## Motivation 
+Headlines on the ever-increasing student debt crisis ,such as these, plague the media. 
+
+
+<img width="452" alt="image" src="https://user-images.githubusercontent.com/100439058/172906622-943a190d-ed45-4721-b066-53d3294581e5.png">
+
+
+<img width="452" alt="image" src="https://user-images.githubusercontent.com/100439058/172906658-1ddb4aec-0e82-4db0-bbc2-06ce642bf33c.png">
+
+Student Debt levels have increased beyond accumulated car loans and credit card debt. 
+
+
+<img width="452" alt="image" src="https://user-images.githubusercontent.com/100439058/172906727-9ffb045d-dd70-4bae-99cb-40262c062870.png">
+
+
+44 million Americans collectively hold over $1.6 trillion in student debt. 
+
+At the same time, advancements in technology, especially automation, are making it harder to earn a living wage without some type of advanced degree. Today, college graduates earn 80% more than those with just a high school diploma, on average. College is more expensive, and important, than ever before. This  dichotomy puts students in a difficult situation: do they risk going into debt they can’t pay back or miss out on the benefits of a college degree?
+
+Having recently taken out such loans ourselves, learning more about the student loan crisis became a topic of increasing interest to us. For the loans we have taken as well as the student loans we may take in the future, it is imperative to understand the costs of higher education in our current political and economic climate. Through our project we hope to get more clarity around questions such as: What is the student loan crisis? Is higher education worth it? What factors affect default rates?
+
+## Justification 
+
+
+
+## Aim 
+
+There were sharp differences in borrowing and repayment patterns across demographic groups. African American students are more likely to borrow than students from other racial and ethnic groups pursuing similar types of degrees, and are more likely to borrow relatively large amounts. They are less successful in repaying their loans and more likely to default. Racial differences in pre-college circumstances, in the types of institutions attended, and in post-college earnings all contribute to the difficulties African American students face in college and beyond.
+
+<img width="452" alt="image" src="https://user-images.githubusercontent.com/100439058/172907332-2279aadf-52b0-4874-a834-223650d31d34.png">
+
+
+There were sharp differences in borrowing and repayment patterns across demographic groups. African American students are more likely to borrow than students from other racial and ethnic groups pursuing similar types of degrees, and are more likely to borrow relatively large amounts. They are less successful in repaying their loans and more likely to default. Racial differences in pre-college circumstances, in the types of institutions attended, and in post-college earnings all contribute to the difficulties African American students face in college and beyond.
+
+We have focused our research into comparing loan usage and college achievement of students of different races to evaluate the implications of racial educational inequality.
+
+Taking all of that into consideration, here are the questions we aim to answer:
+ 
+•	How does race impact on the completition rate of the students?
+
+•	How does average debt intake vary with race?
+
+•	How are students of different racial backgrounds across the states distributed?
+
+
+
+## Understanding our data
+There is an overwhelming amount of data available online on the topic of student loans. Through our research the main sources we found included data.gov, FRED dataset, College Scorecard, NY Fed Microeconomic Data, Statista and StudentAid government datasets. We went through each of these main sources and shortlisted which datasets answered the question the best. Though this was a time-taking process, it gave us a better understanding of what data was out there.
+
+### Fred Dataset
+
+(add image)
+
+This dataset showed Student loans owned and securitized in billions of dollars from 2006 to 2020. It was sourced from the Board of Governors of the Federal Reserve System (US) as part of Economic Research Data. It gives quarterly data from 2006 to 2021, so there are 64 observations. All the data in this dataset was numerical. Fred data aggregates its data from a variety of sources most of which are US government agencies. It is unclear how these agencies collect this particular data however as these are government agencies, it will be done mostly through electronic transmissions or mutually developed questionnaires. There may be a degree of bias introduced with the questionnaires and less so with the electronic transmissions.
+
+### NY Fed Microeconomic Dataset
+
+(add image)
+
+This dataset looks at default rates under different factors such as school type, age, degree program, graduation status, college selectivity and family income. It was sourced from New York Fed Consumer Credit Panel collected as part of the Federal Reserve Bank of New York’s Centre of Microeconomic Data. There were 26 tables in the data. We have only used one so far in our visualizations. It looks at student loan debt from 2003 to 2021 for the 50 states so it had 950 observations. The credit data was collected through a sampling approach of a total adult population with a credit report of 267 million people. They conducted a 5% random primary sample of 13.4 million individuals’ Equifax credit report data. The large scale of this data as well as the randomness means that little bias was introduced in the data collection process.
+
+### College Scorecard Dataset
+
+(add image)
+
+The primary purpose of the Scorecard is to provide data to help prospective postsecondary students make informed enrolment decisions. It was sourced from the US Department of Education. This data contains an extensive database with institution-level data files from 1996 to 2020 containing aggregate data for each institution. There were over 200 institutional characteristics per year such as enrolment, student aid, costs, and student outcomes. It had 3252 columns in total and the data was a mixture of numerical data and categoric data. College Scorecard does not report the percentage of entering students at each school for which they have earnings data. There may be some inaccuracies introduced with respect to schools with branch campuses, because earnings data are only reported at the system level, not for each distinct campus
+
+## General Limitations of Datasets
+
+• Institution based data meaning cant split up students into their races
+• Dataset only contains data for students who have taken student loan – not representative of overall American population and cant make comparisons
+• Issues with there being attributes which were discontinued in certain years – inconsistency within the dataset
+• There may be outliers in the data however excluding states may manipulate the data too much
+• Most recent years don’t have data – COVID – analysis may not be UpToDate
+• Uneven dataset. The number of datapoints vary by year and state
+
+
 ## Data cleaning for analysis: 
 
 The Obama administration aimed to increase the transparency of the higher education system by releasing vast pools of data through the college scorecard. The scorecard provides data which is sufficient for us to be able to measure discrepancies influencing higher education through gender, race, and social class. Our project looks to utilise this availability of big data to understand the impacts that race has on the various educational outcomes of university students, specifically looking at how student loans discriminate against various races. 
@@ -8,14 +85,12 @@ The nature of the college scorecard dataset that we are using is not in the rawe
 
 ### Percentage null values for various attributes: observing the gaps in the data 
 
-
-![Capture](https://user-images.githubusercontent.com/98602884/172904095-ab6532a8-612f-4a7f-ad54-7371aba6159d.JPG)
+![one year attributes null count percent](https://user-images.githubusercontent.com/98602884/172902450-65b9ff89-0fb7-4711-a38d-bf97ff7fc1e1.png)
 
 
 We have initially visualised the shape and the contents of our data by showcasing the proportion of missing values with seaborn displot. We had prior narrowed down the attributes which related to race and the various factors we wished to compare. This displot shows how the various attributes are hereby concentrated with null values especially C150_4_NHPI which showcases an above 90% of values within the attribute are null.
 
 ### Percentage of null values for each attribute analysed: time series 
-
 
 ![multi year attributes null count percent over time](https://user-images.githubusercontent.com/98602884/172902609-1cfc0f7f-40a7-466e-b39a-e16e8c93eff8.png)
 
@@ -41,17 +116,12 @@ We have focused our research on comparing loan usage and college achievement of 
 
 ### Correlation matrix which aggregates raw data from 2013 for key attributes into a state-level basis 
 
-![college correlation matrix](https://user-images.githubusercontent.com/98602884/172903230-6c88f9c8-f786-4c0c-a8e5-6f5982b4bc5b.png)
-
 ### Correlation matrix which aggregates raw data from 2013 for key attributes into an institution level basis – using clean data  
-
-![state correlation matrix](https://user-images.githubusercontent.com/98602884/172903358-d9e0232a-27f9-4a7f-81bd-35debae55a94.png)
 
 We have initially created a heatmap correlation matrix for 2013 for the attributes of interest relating to race using the seaborne library on python. Through creating this correlation matrix, we were able to utilise the Pearson correlation coefficient to observe any linear relationship between two attributes. We were also able to use this table in order to identify any multicollinearity in case we wished to incorporate machine learning into our project. 
 
 
-![Capture1](https://user-images.githubusercontent.com/98602884/172904934-6ff71e2f-11c6-46d2-800e-17100c7f795b.JPG)
-
+correlation=(Cov(x,y))/(σx*σy)
 
 This matrix is especially important when we are conducting such multivariate analysis. Through observing strong correlations or lack of correlations, we were able to pick our appropriate attributes for conducting further analysis and see if the values showed any relationship which would answer our question of how race impacts educational outcomes.
 
@@ -61,11 +131,7 @@ In order to analyse our data, we used python: pandas, NumPy, matplotlib, seaborn
 
 It is apparent that there are rising costs of tuition fees within the United States. The average tuition fees have been spiralling out of control and this is evident in the rising costs of both in-state and out-of-state tuition costs. Through conducting initial descriptive statistics on our cleaned dataset, we found the trend line to be clearly rising. As illustrated by the line graphs below there is a strong upwards trend for tuition fees all-round for institutions. Through filtering down to the top 11 states' fees, we look to explore further whether factors such as race, family income, and average intake criteria play a significant part in the rising costs to students. 
  
-![Figure_1](https://user-images.githubusercontent.com/98602884/172906104-f71606c1-8dd8-42a1-a1ec-2745e60ed8d9.png)
-
-
-![Figure_2](https://user-images.githubusercontent.com/98602884/172906184-4624b369-6dd2-466c-87ca-ed7a440eef52.png)
-
+INSERT GRAPHS 
 
 ## Preparation for the final product: 
 
@@ -75,13 +141,11 @@ Academic literature suggests that Black college students are more likely to take
 
 ### Histogram of default rates across universities, 2013 
 
-![default rate 2013 historgram](https://user-images.githubusercontent.com/98602884/172906337-07a8866c-0dd2-4999-b506-8abb3053bf62.png)
-
 The CDR3 is representative of the 3-year cohort default rate for each institution. A cohort default rate is the percentage of a school's borrowers who enter repayment on certain Federal Family Education Loan (FFEL) Program or William D. Ford Federal Direct Loan (Direct Loan) Program loans during a particular federal fiscal year (FY) and default or meet other specified conditions prior to the end of the second following fiscal year.
 
 We find that through plotting this histogram, the distribution for the default rate is positively skewed. The shape of the histogram does not follow the natural shape of a normal distribution suggesting that the overall default rates are low on average, ranging between 0.0% to 40.0% under the IQR. 
 
-![default rate by state 2013 map](https://user-images.githubusercontent.com/98602884/172906557-2940a5ef-d50a-4435-afb2-62a4a88dc8fd.png)
+INSERT GRAPH
 
 This map shows the spread of default rates across the states. We can observe that there is significant variation in the default rate across the US with the top 3 defaulting states being: Nevada, Wyoming, and New Mexico and the lowest defaulting states being: Nebraska, North Dakota, and Vermont. We wish to compare the default rates of each state with respect to the average competition rate for each race. 
 
@@ -93,22 +157,15 @@ We have chosen to use the Completion rate for first-time, full-time students at 
 
 We have produces a series containing geographic heat plots for the completion rates for Black, White and Asian students for our analysis. We have limited our visualisations to these groups to cover the top three groups for which we have data. 
 
-![asian 4 year completion percentage](https://user-images.githubusercontent.com/98602884/172907222-26dbf42f-2d70-4e15-b73a-e553a1f3ef63.png)
+INSERT GRAPH 
 
 We can observe from this diagram that the 4year competition percentage for Asian students is high across the board. States with a high percentage of Asian population such as California and the North East exhibit on average higher completion percentages. This pattern may be evident  due to utilising a larger sample size in these regions, exaggerating the average Asian educational attainment. Furthermore, there could be innate differences in the migration patterns which results in a higher completion rate on average. Again, states in the Deep South have a larger percentage of non-Indian, non-Chinese population migrants from Indochina, the Philippines and Central Asia. The generations of migration within these regions uniquely impact their socio-economic conditions, so variability within the Asian community needs to be considered before making any inferences from this visualisation alone. Also, it is important to account for states which have an extremely small population such as Wyoming, Nebraska, New Mexico and Georgia for not showing an accurate depiction of the cross-geographical distribution of the Asian Completion percentages.  
 
-
-![black 4 year completion percentage](https://user-images.githubusercontent.com/98602884/172907315-e14b8c6d-1048-471e-bd47-6047a24844f8.png)
-
 With reference to the completion rates for the black students, the differences, within the Deep South regions which contain large black populations, provide interesting insights. For example, Michigan and Wisconsin, which have a demographic makeup of predominantly black students, show relatively low levels of undergraduate completion. This may be justified by the large automobile driven economy of those states that has led to the emergence of large inner-city poverty and a strong black-hood neighbourhood. These socio-economic factors thereby play a large role in loan repayment. Within the northern states, the low completion rate may be justified by the small population which exists within those regions.
-
-
-![white 4 year completion percentage](https://user-images.githubusercontent.com/98602884/172907392-7d998f8f-5f34-4b89-b877-577c04216aad.png)
 
 White students overall have exhibited lower percentage completion rates across the board and the variation seems to be rather limited. Pennsylvania and the tri-state area containing Delaware, Rhode Island and Connecticut are observable anomalies with relatively high completion rates. These outlier states may demonstrate this nature due to the variation in the volume of universities and institutions within those areas. Areas which contain large concentrations of colleges have some influence on the average educational attainment of the population. For example, Mid-region states tend to have fewer universities which therefore leads to lower completion rates. Beyond accounting for the population sizes there are many external factors and error terms, which need to be taken into consideration when making claims about this visualisation. 
 
 #### Part 2 
-
 
 After assessing each of the attributes separately, we have then completed a series of scatter plots in order to get a true understanding of any correlation which exists between the default rates and the competition rate for each of the races. Using the skitlearn module, we have built a regression model which creates a line of best fit with the following regression formulae. Within our model, we wish to make the independent variable y to be the default rate and the dependent variable component X_1 as the 4-year competition percentage for each race.  
 
@@ -119,7 +176,6 @@ In order to create the most appropriate line of best fit for interpolating and m
 R^2=1-  RSS/TSS
 
 ### Asian 4-year completion percentage vs default rate
-
 
 The 4-year completion percentage of Asian students versus default rate analysis indicates that there is no real strong correlation between these two variables. The Asian student regression has both the least steep line and also tapers off relatively quickly, which is indicative of the fact that Asian students are accordingly more likely to pay off their debts despite not completing their degree relative to black or white students. This can bring into consideration that debt forgiveness has a lower impact on Asian students’ future incomes relative to other races. 
 
@@ -140,9 +196,6 @@ This project began by attempting to unpack the complex and multi-faceted nature 
 ## Appendix:
 Link for github page: 
 Repository:
-
-
-
 
 
 
