@@ -8,9 +8,14 @@ The nature of the college scorecard dataset that we are using is not in the rawe
 
 ### Percentage null values for various attributes: observing the gaps in the data 
 
+![one year attributes null count percent](https://user-images.githubusercontent.com/98602884/172902450-65b9ff89-0fb7-4711-a38d-bf97ff7fc1e1.png)
+
+
 We have initially visualised the shape and the contents of our data by showcasing the proportion of missing values with seaborn displot. We had prior narrowed down the attributes which related to race and the various factors we wished to compare. This displot shows how the various attributes are hereby concentrated with null values especially C150_4_NHPI which showcases an above 90% of values within the attribute are null.
 
 ### Percentage of null values for each attribute analysed: time series 
+
+![multi year attributes null count percent over time](https://user-images.githubusercontent.com/98602884/172902609-1cfc0f7f-40a7-466e-b39a-e16e8c93eff8.png)
 
 As illustrated by the above visualisation, we can see the discontinuation of certain attributes being replaced such as UGDS_ASIAN which only has records after 2008. Through conducting these types of visualisations, we were better able to understand how to clean our data.
 
@@ -114,5 +119,6 @@ This project began by attempting to unpack the complex and multi-faceted nature 
 ## Appendix:
 Link for github page: 
 Repository:
+
 
 
