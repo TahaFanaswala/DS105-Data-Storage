@@ -75,12 +75,12 @@ The primary purpose of the Scorecard is to provide data to help prospective post
 
 ## General Limitations of Datasets
 
-• Institution based data meaning cant split up students into their races
-• Dataset only contains data for students who have taken student loan – not representative of overall American population and cant make comparisons
-• Issues with there being attributes which were discontinued in certain years – inconsistency within the dataset
-• There may be outliers in the data however excluding states may manipulate the data too much
-• Most recent years don’t have data – COVID – analysis may not be UpToDate
-• Uneven dataset. The number of datapoints vary by year and state
+- Institution based data meaning cant split up students into their races
+- Dataset only contains data for students who have taken student loan – not representative of overall American population and cant make comparisons
+- Issues with there being attributes which were discontinued in certain years – inconsistency within the dataset
+- There may be outliers in the data however excluding states may manipulate the data too much
+= Most recent years don’t have data – COVID – analysis may not be UpToDate
+- Uneven dataset. The number of datapoints vary by year and state
 
 ## Data cleaning for analysis: 
 
@@ -94,7 +94,7 @@ The nature of the college scorecard dataset that we are using is not in the rawe
 ![Capture](https://user-images.githubusercontent.com/98602884/172904095-ab6532a8-612f-4a7f-ad54-7371aba6159d.JPG)
 
 
-We have initially visualised the shape and the contents of our data by showcasing the proportion of missing values with seaborn displot. We had prior narrowed down the attributes which related to race and the various factors we wished to compare. This displot shows how the various attributes are hereby concentrated with null values especially C150_4_NHPI which showcases an above 90% of values within the attribute are null.
+We have initially visualised the shape and the contents of our data by showcasing the proportion of missing values with `seaborn` displot. We had prior narrowed down the attributes which related to race and the various factors we wished to compare. This displot shows how the various attributes are hereby concentrated with null values especially C150_4_NHPI which showcases an above 90% of values within the attribute are null.
 
 ### Percentage of null values for each attribute analysed: time series 
 
@@ -130,7 +130,7 @@ We have focused our research on comparing loan usage and college achievement of 
 
 ![state correlation matrix](https://user-images.githubusercontent.com/98602884/172903358-d9e0232a-27f9-4a7f-81bd-35debae55a94.png)
 
-We have initially created a heatmap correlation matrix for 2013 for the attributes of interest relating to race using the seaborne library on python. Through creating this correlation matrix, we were able to utilise the Pearson correlation coefficient to observe any linear relationship between two attributes. We were also able to use this table in order to identify any multicollinearity in case we wished to incorporate machine learning into our project. 
+We have initially created a heatmap correlation matrix for 2013 for the attributes of interest relating to race using the `seaborne` library on python. Through creating this correlation matrix, we were able to utilise the Pearson correlation coefficient to observe any linear relationship between two attributes. We were also able to use this table in order to identify any multicollinearity in case we wished to incorporate machine learning into our project. 
 
 
 ![Capture1](https://user-images.githubusercontent.com/98602884/172904934-6ff71e2f-11c6-46d2-800e-17100c7f795b.JPG)
@@ -138,7 +138,7 @@ We have initially created a heatmap correlation matrix for 2013 for the attribut
 
 This matrix is especially important when we are conducting such multivariate analysis. Through observing strong correlations or lack of correlations, we were able to pick our appropriate attributes for conducting further analysis and see if the values showed any relationship which would answer our question of how race impacts educational outcomes.
 
-In order to analyse our data, we used python: pandas, NumPy, matplotlib, seaborn and tableau. We have decided to use these modules since we felt they suited our data best. 
+In order to analyse our data, we used python: ``pandas, NumPy, matplotlib, seaborn`` and tableau. We have decided to use these modules since we felt they suited our data best. 
 
 ## Descriptive statistics:
 
@@ -152,7 +152,7 @@ It is apparent that there are rising costs of tuition fees within the United Sta
 
 ## Preparation for the final product: 
 
-For our final outcome, we wished to highlight whether the racial distribution across the states showed any correlation with the average default rate within the state. In order to understand the relationship between these factors, we have decided to use heat maps of the USA as we felt that this visualization was most effective in showing state-level changes. We initially experimented with Tableau for creating these map visualisations, yet, we felt that the geographic maps would be much clearer and cleaner for the final product by using geomaps using Plotly in python. This module produced graphs which were much clearer for observing any correlations.
+For our final outcome, we wished to highlight whether the racial distribution across the states showed any correlation with the average default rate within the state. In order to understand the relationship between these factors, we have decided to use heat maps of the USA as we felt that this visualization was most effective in showing state-level changes. We initially experimented with Tableau for creating these map visualisations, yet, we felt that the geographic maps would be much clearer and cleaner for the final product by using ``geomaps`` using Plotly in python. This module produced graphs which were much clearer for observing any correlations.
  
 Academic literature suggests that Black college students are more likely to take out student loans than white students. In order to better understand the impacts that race plays on the average default rate we initially created a histogram which showed the distribution of the default rate.
 
@@ -163,6 +163,8 @@ Academic literature suggests that Black college students are more likely to take
 The CDR3 is representative of the 3-year cohort default rate for each institution. A cohort default rate is the percentage of a school's borrowers who enter repayment on certain Federal Family Education Loan (FFEL) Program or William D. Ford Federal Direct Loan (Direct Loan) Program loans during a particular federal fiscal year (FY) and default or meet other specified conditions prior to the end of the second following fiscal year.
 
 We find that through plotting this histogram, the distribution for the default rate is positively skewed. The shape of the histogram does not follow the natural shape of a normal distribution suggesting that the overall default rates are low on average, ranging between 0.0% to 40.0% under the IQR. 
+
+### Default rate by state 2013 geomap 
 
 ![default rate by state 2013 map](https://user-images.githubusercontent.com/98602884/172906557-2940a5ef-d50a-4435-afb2-62a4a88dc8fd.png)
 
@@ -176,15 +178,22 @@ We have chosen to use the Completion rate for first-time, full-time students at 
 
 We have produces a series containing geographic heat plots for the completion rates for Black, White and Asian students for our analysis. We have limited our visualisations to these groups to cover the top three groups for which we have data. 
 
+### 4 year completion percentage for Asian students  
+
 ![asian 4 year completion percentage](https://user-images.githubusercontent.com/98602884/172907222-26dbf42f-2d70-4e15-b73a-e553a1f3ef63.png)
 
 We can observe from this diagram that the 4year competition percentage for Asian students is high across the board. States with a high percentage of Asian population such as California and the North East exhibit on average higher completion percentages. This pattern may be evident  due to utilising a larger sample size in these regions, exaggerating the average Asian educational attainment. Furthermore, there could be innate differences in the migration patterns which results in a higher completion rate on average. Again, states in the Deep South have a larger percentage of non-Indian, non-Chinese population migrants from Indochina, the Philippines and Central Asia. The generations of migration within these regions uniquely impact their socio-economic conditions, so variability within the Asian community needs to be considered before making any inferences from this visualisation alone. Also, it is important to account for states which have an extremely small population such as Wyoming, Nebraska, New Mexico and Georgia for not showing an accurate depiction of the cross-geographical distribution of the Asian Completion percentages.  
 
 
+### 4 year completion percentage for Black students  
+
 ![black 4 year completion percentage](https://user-images.githubusercontent.com/98602884/172907315-e14b8c6d-1048-471e-bd47-6047a24844f8.png)
 
-With reference to the completion rates for the black students, the differences, within the Deep South regions which contain large black populations, provide interesting insights. For example, Michigan and Wisconsin, which have a demographic makeup of predominantly black students, show relatively low levels of undergraduate completion. This may be justified by the large automobile driven economy of those states that has led to the emergence of large inner-city poverty and a strong black-hood neighbourhood. These socio-economic factors thereby play a large role in loan repayment. Within the northern states, the low completion rate may be justified by the small population which exists within those regions.
+With reference to the completion rates for the black students, the differences, within the Deep South regions which contain large black populations, provide interesting insights. For example, Michigan and Wisconsin, which have a demographic makeup of predominantly black students, show relatively low levels of undergraduate completion. This may be justified by the large automobile driven economy of those states that has led to the emergence of large inner-city poverty and a strong black-hood communities. These socio-economic factors thereby play a large role in loan repayment. Within the northern states, the low completion rate may be justified by the small population which exists within those regions.
 
+
+
+### 4 year completion percentage for White students 
 
 ![white 4 year completion percentage](https://user-images.githubusercontent.com/98602884/172907392-7d998f8f-5f34-4b89-b877-577c04216aad.png)
 
@@ -193,7 +202,7 @@ White students overall have exhibited lower percentage completion rates across t
 #### Part 2 
 
 
-After assessing each of the attributes separately, we have then completed a series of scatter plots in order to get a true understanding of any correlation which exists between the default rates and the competition rate for each of the races. Using the skitlearn module, we have built a regression model which creates a line of best fit with the following regression formulae. Within our model, we wish to make the independent variable y to be the default rate and the dependent variable component X_1 as the 4-year competition percentage for each race.  
+After assessing each of the attributes separately, we have then completed a series of scatter plots in order to get a true understanding of any correlation which exists between the default rates and the competition rate for each of the races. Using the ``skitlearn`` module, we have built a regression model which creates a line of best fit with the following regression formulae. Within our model, we wish to make the independent variable y to be the default rate and the dependent variable component X_1 as the 4-year competition percentage for each race.  
 
 ![image](https://user-images.githubusercontent.com/98602884/172907680-2899ed95-7e7d-4e7b-91c5-00715a7047e8.png)
 
@@ -229,8 +238,7 @@ Although we were able to produce this level of analysis through these visualisat
 This project began by attempting to unpack the complex and multi-faceted nature of indebtedness and college education in the US. Drawing on a diverse set of open-source data this paper utilised data visualisation skills to attempt to draw inferences as to regional and ethnic variations in university completion and default rates. The lack of qualitative research precludes us from making strong inferences as to causal mechanisms or attempting to push for policy proposals. However, the availability of such datasets is a long term catalyst for such research that the authors of this paper believe would be useful in understanding how best policies surrounding the recent loan-forgiveness debate could be best structured to help at-risk communities. 
 
 ## Appendix:
-Link for github page: 
-Repository:
+Repository: https://github.com/TahaFanaswala/DS105-Data-Storage
 
 
 
