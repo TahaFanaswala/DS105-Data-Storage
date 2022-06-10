@@ -1,7 +1,7 @@
 # Understanding The Impacts Race Has On Student Loan Repayment 
 
 ## Motivation 
-Headlines on the ever-increasing student debt crisis ,such as these, plague the media. 
+Headlines on the ever-increasing student debt crisis, such as these, plague the media. 
 
 
 <img width="452" alt="image" src="https://user-images.githubusercontent.com/100439058/172906622-943a190d-ed45-4721-b066-53d3294581e5.png">
@@ -17,9 +17,9 @@ Student Debt levels have increased beyond accumulated car loans and credit card 
 
 44 million Americans collectively hold over $1.6 trillion in student debt. 
 
-At the same time, advancements in technology, especially automation, are making it harder to earn a living wage without some type of advanced degree. Today, college graduates earn 80% more than those with just a high school diploma, on average. College is more expensive, and important, than ever before. This  dichotomy puts students in a difficult situation: do they risk going into debt they can’t pay back or miss out on the benefits of a college degree?
+At the same time, advancements in technology, especially automation, are making it harder to earn a living wage without some type of advanced degree. Today, college graduates earn 80% more than those with just a high school diploma, on average. However, college is more expensive, and important, than ever before. This dichotomy puts students in a difficult situation: do they risk going into debt they can’t pay back or miss out on the benefits of a college degree?
 
-Having recently taken out such loans ourselves, learning more about the student loan crisis became a topic of increasing interest to us. For the loans we have taken as well as the student loans we may take in the future, it is imperative to understand the costs of higher education in our current political and economic climate. Through our project we hope to get more clarity around questions such as: What is the student loan crisis? Is higher education worth it? What factors affect default rates?
+Having recently taken out such loans ourselves, learning more about the student loan crisis became a topic of increasing interest to us. For the loans we have taken, as well as the student loans we may take in the future, it is imperative to understand the costs of higher education in our current political and economic climate. Through our project we hope to get more clarity around questions such as: What is the student loan crisis? Is higher education worth it? What factors affect default rates?
 
 ## Justification 
 
@@ -38,11 +38,11 @@ We have focused our research into comparing loan usage and college achievement o
 
 Taking all of that into consideration, here are the questions we aim to answer:
 
-•	How does race impact on the completition rate of the students?
+•	How does race impact on the completition rate of the students?  
 
-•	How does average debt intake vary with race?
+•	How does average debt intake vary with race?  
 
-•	How are students of different racial backgrounds across the states distributed?
+•	How are students of different racial backgrounds across the states distributed?  
 
 
 
@@ -69,12 +69,18 @@ The primary purpose of the Scorecard is to provide data to help prospective post
 
 ## General Limitations of Datasets
 
-• Institution based data meaning cant split up students into their races
-• Dataset only contains data for students who have taken student loan – not representative of overall American population and cant make comparisons
-• Issues with there being attributes which were discontinued in certain years – inconsistency within the dataset
-• There may be outliers in the data however excluding states may manipulate the data too much
-• Most recent years don’t have data – COVID – analysis may not be UpToDate
-• Uneven dataset. The number of datapoints vary by year and state
+• Institution based data meaning cant split up students into their races  
+
+• Dataset only contains data for students who have taken student loan – not representative of overall American population and cant make comparisons  
+
+• Issues with there being attributes which were discontinued in certain years – inconsistency within the dataset  
+
+• There may be outliers in the data however excluding states may manipulate the data too much  
+
+• Most recent years don’t have data – COVID – analysis may not be UpToDate  
+
+• Uneven dataset. The number of datapoints vary by year and state  
+
 
 ## Data cleaning for analysis: 
 
@@ -114,7 +120,7 @@ We have attached the function we wrote to perform the state aggregation:
 
 During the initial stages of our project, we chose a very broad question which aimed to understand whether federal student loans are still significant, however, we found this question to be rather too farfetched. In order to have a more appropriate project which didn’t have too many variables, we chose to look specifically into how racial differences affect those taking out student loans.
 
-We have focused our research on comparing loan usage and college achievement of students of different races to evaluate the implications of racial educational inequality. The aim of our project is structured toward answering how race impacts competition rates for students, how the average debt incurred throughout their studies varied with race and how the students of different backgrounds are distributed across the states. In order to decide on how to analyse the data and which attributes we need to use, we manually screened the data to see which attributes are significant for analysing the impacts of race. 
+We have focused our research on comparing loan usage and college achievement of students of different races to evaluate the implications of racial educational inequality. The aim of our project is structured toward answering how race impacts completion rates for students, how the average debt incurred throughout their studies varied with race and how the students of different backgrounds are distributed across the states. In order to decide on how to analyse the data and which attributes we need to use, we manually screened the data to see which attributes are significant for analysing the impacts of race. 
 
 ### Correlation matrix which aggregates raw data from 2013 for key attributes into a state-level basis 
 
@@ -160,19 +166,19 @@ We find that through plotting this histogram, the distribution for the default r
 
 ![default rate by state 2013 map](https://user-images.githubusercontent.com/98602884/172906557-2940a5ef-d50a-4435-afb2-62a4a88dc8fd.png)
 
-This map shows the spread of default rates across the states. We can observe that there is significant variation in the default rate across the US with the top 3 defaulting states being: Nevada, Wyoming, and New Mexico and the lowest defaulting states being: Nebraska, North Dakota, and Vermont. We wish to compare the default rates of each state with respect to the average competition rate for each race. 
+This map shows the spread of default rates across the states. We can observe that there is significant variation in the default rate across the US with the top 3 defaulting states being: Nevada, Wyoming, and New Mexico and the lowest defaulting states being: Nebraska, North Dakota, and Vermont. We wish to compare the default rates of each state with respect to the average completion rate for each race. 
 
-We have chosen to use the Completion rate for first-time, full-time students at four-year institutions (150% of the expected time to completion) for white, black and Asian students for drawing comparisons. This attribute holds value since program completion can determine whether a borrower will make progress in paying down their loans. Students who are unable to complete their degrees bear a greater burden of paying back the loans. Third Way, a centre-left think tank, finds that “students who complete a degree or certificate are 20 percentage points more likely to begin paying down their loan principal than non-completers in each year after leaving campus ”. Through categorising the competition rate by race we aim to observe the effects that competition by race has on repayment in order to see if there is some observable trend which could suggest that black students with similar competition rates experience higher default rates compared to white students or Asian students. 
+We have chosen to use the Completion rate for first-time, full-time students at four-year institutions (150% of the expected time to completion) for white, black and Asian students for drawing comparisons. This attribute holds value since program completion can determine whether a borrower will make progress in paying down their loans. Students who are unable to complete their degrees bear a greater burden of paying back the loans. Third Way, a centre-left think tank, finds that “students who complete a degree or certificate are 20 percentage points more likely to begin paying down their loan principal than non-completers in each year after leaving campus ”. Through categorising the completion rate by race we aim to observe the effects that completion by race has on repayment in order to see if there is some observable trend which could suggest that black students with similar completion rates experience higher default rates compared to white students or Asian students. 
 
 ## Results
 
 #### Part 1 
 
-We have produces a series containing geographic heat plots for the completion rates for Black, White and Asian students for our analysis. We have limited our visualisations to these groups to cover the top three groups for which we have data. 
+We have produced a series containing geographic heat plots for the completion rates for Black, White and Asian students for our analysis. We have limited our visualisations to these groups to cover the top three groups for which we have data. 
 
 ![asian 4 year completion percentage](https://user-images.githubusercontent.com/98602884/172907222-26dbf42f-2d70-4e15-b73a-e553a1f3ef63.png)
 
-We can observe from this diagram that the 4year competition percentage for Asian students is high across the board. States with a high percentage of Asian population such as California and the North East exhibit on average higher completion percentages. This pattern may be evident  due to utilising a larger sample size in these regions, exaggerating the average Asian educational attainment. Furthermore, there could be innate differences in the migration patterns which results in a higher completion rate on average. Again, states in the Deep South have a larger percentage of non-Indian, non-Chinese population migrants from Indochina, the Philippines and Central Asia. The generations of migration within these regions uniquely impact their socio-economic conditions, so variability within the Asian community needs to be considered before making any inferences from this visualisation alone. Also, it is important to account for states which have an extremely small population such as Wyoming, Nebraska, New Mexico and Georgia for not showing an accurate depiction of the cross-geographical distribution of the Asian Completion percentages.  
+We can observe from this diagram that the 4year completion percentage for Asian students is high across the board. States with a high percentage of Asian population such as California and the North East exhibit on average higher completion percentages. This pattern may be evident  due to utilising a larger sample size in these regions, exaggerating the average Asian educational attainment. Furthermore, there could be innate differences in the migration patterns which results in a higher completion rate on average. Again, states in the Deep South have a larger percentage of non-Indian, non-Chinese population migrants from Indochina, the Philippines and Central Asia. The generations of migration within these regions uniquely impact their socio-economic conditions, so variability within the Asian community needs to be considered before making any inferences from this visualisation alone. Also, it is important to account for states which have an extremely small population such as Wyoming, Nebraska, New Mexico and Georgia for not showing an accurate depiction of the cross-geographical distribution of the Asian Completion percentages.  
 
 
 ![black 4 year completion percentage](https://user-images.githubusercontent.com/98602884/172907315-e14b8c6d-1048-471e-bd47-6047a24844f8.png)
@@ -187,7 +193,7 @@ White students overall have exhibited lower percentage completion rates across t
 #### Part 2 
 
 
-After assessing each of the attributes separately, we have then completed a series of scatter plots in order to get a true understanding of any correlation which exists between the default rates and the competition rate for each of the races. Using the skitlearn module, we have built a regression model which creates a line of best fit with the following regression formulae. Within our model, we wish to make the independent variable y to be the default rate and the dependent variable component X_1 as the 4-year competition percentage for each race.  
+After assessing each of the attributes separately, we have then completed a series of scatter plots in order to get a true understanding of any correlation which exists between the default rates and the completion rate for each of the races. Using the sklearn module, we have built a regression model which creates a line of best fit with the following regression formulae. Within our model, we wish to make the independent variable y to be the default rate and the dependent variable component X_1 as the 4-year completion percentage for each race.  
 
 ![image](https://user-images.githubusercontent.com/98602884/172907680-2899ed95-7e7d-4e7b-91c5-00715a7047e8.png)
 
@@ -216,7 +222,7 @@ Whereas we can more clearly see that there is a clear causal relationship which 
 
 ## Conclusion:
 
-In conclusion, the journey we have taken in order to better understand the student loan crisis focusing on how race has an impact on the student's ability to pay back has been partially achieved. Recalling from earlier, we looked to explore how race impacts competition rates for students, how the average debt incurred throughout their studies varied with race and how the students of different backgrounds are distributed across the states. I believe we were able to achieve this to a reasonable level through employing various tools within data science. The use of the geomaps and the scatter plots with regressions provided great insight into some overarching trends that are observable. 
+In conclusion, the journey we have taken in order to better understand the student loan crisis focusing on how race has an impact on the student's ability to pay back has been partially achieved. Recalling from earlier, we looked to explore how race impacts completion rates for students, how the average debt incurred throughout their studies varied with race and how the students of different backgrounds are distributed across the states. I believe we were able to achieve this to a reasonable level through employing various tools within data science. The use of the geomaps and the scatter plots with regressions provided great insight into some overarching trends that are observable. 
 
 Although we were able to produce this level of analysis through these visualisations, there are a number of limitations to our visualisations. Firstly, as mentioned in the analysis the completion rate for students of different states with respect to race has many different determinants since firstly the migration patterns of the different races have huge impacts on their standard of living and therefore educational attainment. Furthermore, students can move states for higher education purposes meaning that comparing regions with a large black population to the average default rate within the specific region may not have economical significance. There are also inherent shortfalls of the dataset itself by aggregating the data on an institution-level rather than by each individual’s data. For future improvements on the analysis we have conducted it may be necessary to scale the default rates based on the size of the institution and the cohort size.
 
