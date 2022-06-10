@@ -55,19 +55,23 @@ There is an overwhelming amount of data available online on the topic of student
 
 ### Fred Dataset
 
-(add image)
+<img width="273" alt="image" src="https://user-images.githubusercontent.com/100439058/173008898-44577070-1428-49e1-b68b-c67bca322444.png">
 
 This dataset showed Student loans owned and securitized in billions of dollars from 2006 to 2020. It was sourced from the Board of Governors of the Federal Reserve System (US) as part of Economic Research Data. It gives quarterly data from 2006 to 2021, so there are 64 observations. All the data in this dataset was numerical. Fred data aggregates its data from a variety of sources most of which are US government agencies. It is unclear how these agencies collect this particular data however as these are government agencies, it will be done mostly through electronic transmissions or mutually developed questionnaires. There may be a degree of bias introduced with the questionnaires and less so with the electronic transmissions.
 
 ### NY Fed Microeconomic Dataset
 
-(add image)
+<img width="330" alt="image" src="https://user-images.githubusercontent.com/100439058/173008913-b38e3c16-46b5-4588-92a1-5fef128e3957.png">
+<img width="334" alt="image" src="https://user-images.githubusercontent.com/100439058/173008935-cf8ed0bc-a471-4c20-8662-d4c23921a30a.png">
+<img width="333" alt="image" src="https://user-images.githubusercontent.com/100439058/173008955-f9836b62-7ec7-4f6a-8d6a-26604f630a31.png">
+<img width="334" alt="image" src="https://user-images.githubusercontent.com/100439058/173008969-eff4eb8a-8acb-441b-9770-181a9d0af5a7.png">
+
 
 This dataset looks at default rates under different factors such as school type, age, degree program, graduation status, college selectivity and family income. It was sourced from New York Fed Consumer Credit Panel collected as part of the Federal Reserve Bank of New York’s Centre of Microeconomic Data. There were 26 tables in the data. We have only used one so far in our visualizations. It looks at student loan debt from 2003 to 2021 for the 50 states so it had 950 observations. The credit data was collected through a sampling approach of a total adult population with a credit report of 267 million people. They conducted a 5% random primary sample of 13.4 million individuals’ Equifax credit report data. The large scale of this data as well as the randomness means that little bias was introduced in the data collection process.
 
 ### College Scorecard Dataset
 
-(add image)
+<img width="351" alt="image" src="https://user-images.githubusercontent.com/100439058/173009005-492bf620-c026-4810-9008-c7601554f7d6.png">
 
 The primary purpose of the Scorecard is to provide data to help prospective postsecondary students make informed enrolment decisions. It was sourced from the US Department of Education. This data contains an extensive database with institution-level data files from 1996 to 2020 containing aggregate data for each institution. There were over 200 institutional characteristics per year such as enrolment, student aid, costs, and student outcomes. It had 3252 columns in total and the data was a mixture of numerical data and categoric data. College Scorecard does not report the percentage of entering students at each school for which they have earnings data. There may be some inaccuracies introduced with respect to schools with branch campuses, because earnings data are only reported at the system level, not for each distinct campus
 
